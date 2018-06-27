@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>首页</title>
+
+</head>
+<body>
+
+<div id="app">
+    <label for="r1">修改颜色吧</label><input type="checkbox" v-model="class1" id="r1">
+    <br><br>
+    <div v-bind:class="{'class1': class1}">
+        directiva v-bind:class
+    </div>
+
+    <button v-on:click="demo">跳转</button>
+
+</div>
+
+</body>
+</html>

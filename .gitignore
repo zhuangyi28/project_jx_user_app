@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+# ����.idea���ļ�
+.idea
+.build
+.dist
+.test
+rev
+.project
+.setting
