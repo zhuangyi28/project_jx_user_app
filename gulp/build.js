@@ -11,6 +11,8 @@ const gulp = require('gulp'),
 
     rename = require('gulp-rename'),//重命名
 
+    babel = require("gulp-babel"),//es6 -> es5
+
     imagemin = require('gulp-imagemin'),//图片压缩
 
     pngquant = require('imagemin-pngquant'),//png压缩
@@ -161,6 +163,8 @@ gulp.task('build_js', ()=> {
 
         gulp.src('src/view/' + file_list_fa[i] + '/**/*.js')
 
+            .pipe(babel())
+
             .pipe(concatDir({ext: '.js'}))
 
             .pipe(gulp.dest('.build/js'))
@@ -178,6 +182,8 @@ gulp.task('build_js', ()=> {
 gulp.task('build_js_common', ()=> {
 
     gulp.src('src/basic/**/*.js')
+
+        .pipe(babel())
 
         .pipe(concat('common.js'))
 
@@ -279,6 +285,8 @@ gulp.task('build_server', () => {
         name: 'jx_user',//服务名称
 
         root: '.build',//目录
+
+        //host:'172.18.0.42',
 
         port: 222,//端口
 

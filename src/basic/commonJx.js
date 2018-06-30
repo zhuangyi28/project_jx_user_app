@@ -41,6 +41,21 @@ var commonJx={
 
         }
 
+    },
+
+    /**
+     * @description 一个ajax请求，通用方法封装
+     *
+     * @param {string} url 需要跳转的url地址
+     *
+     * @author YX
+     * @data 2018-06-29
+     */
+
+    ajax(){
+
+        
+
     }
 
 

@@ -5,16 +5,22 @@
 </head>
 <body>
 
-<div id="app">
-    <label for="r1">修改颜色吧</label><input type="checkbox" v-model="class1" id="r1">
-    <br><br>
-    <div v-bind:class="{'class1': class1}">
-        directiva v-bind:class
+
+<form class="mui-input-group" id="app">
+    <div class="mui-input-row">
+        <label>用户名</label>
+        <input type="text" class="mui-input-clear"  v-model="num" placeholder="请输入用户名">
     </div>
+    <div class="mui-input-row">
+        <label>密码</label>
+        <input type="password" class="mui-input-password" v-model="password" placeholder="请输入密码">
+    </div>
+    <div class="mui-button-row">
+        <button type="button" class="mui-btn mui-btn-primary" v-on:tap="demo" >确认</button>
+        <button type="button" class="mui-btn mui-btn-danger" >取消</button>
+    </div>
+</form>
 
-    <button v-on:click="demo">跳转</button>
-
-</div>
 
 </body>
 </html>
