@@ -36,7 +36,9 @@ const gulp = require('gulp'),
     through = require('through2');//通道
 
 
-var file_name,//文件夹名称
+var isWindows=true,//判断windows下
+
+    file_name,//文件夹名称
 
     file_name_fa,//父文件夹名称
 
@@ -58,6 +60,18 @@ gulp.task("build_ejs", ()=> {
 
             file_name = file.relative.split("\\")[1];
 
+            if(!file_name){
+
+                isWindows=false;
+
+            }
+
+            if(!isWindows){
+
+                file_name = file.relative.split("/")[1];
+
+            }
+
             this.push(file);
 
             cb();
@@ -71,6 +85,12 @@ gulp.task("build_ejs", ()=> {
         .pipe(through.obj(function (file, enc, cb)  {
 
             file_name_fa = file.relative.split("\\")[0];
+
+            if(!isWindows){
+
+                file_name_fa = file.relative.split("/")[0];
+
+            }
 
             this.push(file);
 
@@ -288,7 +308,7 @@ gulp.task('build_server', () => {
 
         //host:'172.18.0.42',
 
-        port: 222,//端口
+        port: 8888,//端口
 
         livereload: true//是否支持实时刷新
 

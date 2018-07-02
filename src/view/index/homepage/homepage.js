@@ -1,12 +1,11 @@
+const url = 'http://jxtest.99payroll.cn/jx-user';//登录环境
 
-const url='http://jxtest.99payroll.cn/jx-user';//登录环境
-
-const signUrl ='/jx/action/login';//登录的url
+const signUrl = '/jx/action/login';//登录的url
 
 
 function json2Form(json) {
     var str = [];
-    for(var p in json){
+    for (var p in json) {
         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
     }
 
@@ -21,56 +20,57 @@ new Vue({
 
     el: '#app',
 
-    data:{
+    data: {
 
-        num:'',
-        
-        password:""
+        num: '',
+
+        password: ""
 
     },
 
     methods: {
 
-        demo(){
+        demo() {
 
-            var _this=this;
+            var _this = this;
 
             //commonJx.skipTo('http://www.taobao.com');
 
-            mui.ajax(url+signUrl,{
+            commonJx.ajax({
 
-                data:json2Form({
+                url: url + signUrl,
 
-                    mobile:_this.num,
-                    
-                    password:hex_md5(_this.password)
+                data: json2Form({
+
+                    mobile: _this.num,
+
+                    password: hex_md5(_this.password)
 
                 }),
 
-                dataType:'json',//服务器返回json格式数据
+                dataType: 'json',//服务器返回json格式数据
 
-                type:'post',//HTTP请求类型
+                type: 'post',//HTTP请求类型
 
-                timeout:10000,//超时时间设置为10秒；
+                timeout: 10000,//超时时间设置为10秒；
 
-                headers:{
+                headers: {
 
                     'content-type': 'application/x-www-form-urlencoded' // post请求
 
                 },
-                success:function(data){
+                success: function (res) {
                     //服务器返回响应，根据响应结果，分析是否登录成功；
-                    console.log(data)
+                    console.log(res)
 
                 },
 
-                error:function(xhr,type,errorThrown){
+                fail: function (res) {
                     //异常处理；
-                    console.log(type);
+                    console.log(res);
                 }
 
             });
-
 
 
         }
