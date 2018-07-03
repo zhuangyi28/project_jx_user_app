@@ -183,7 +183,10 @@ gulp.task('build_js', ()=> {
 
         gulp.src('src/view/' + file_list_fa[i] + '/**/*.js')
 
-            .pipe(babel())
+            .pipe(babel({
+                presets: ['es2015']
+            }))
+
 
             .pipe(concatDir({ext: '.js'}))
 
@@ -203,7 +206,10 @@ gulp.task('build_js_common', ()=> {
 
     gulp.src('src/basic/**/*.js')
 
-        .pipe(babel())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+
 
         .pipe(concat('common.js'))
 
